@@ -1,5 +1,42 @@
-<!--
-    Replace this with your working code from Lab 2, and include:
-    - The styles in this folder's `style.css`
-    - The script in script.js, which should be included via a `<script src="script.js" >` call before your closing </body> tag 
--->
+<html lang="en">
+<head>
+    <meta charset='UTF-8'/>
+    <title>Hassan Kane Lab 1</title>
+    <link rel='stylesheet' href='style.css'/>
+  </head>
+<body>
+    <div class = "wrapper">
+        <header class = "header"><h1>Hassan Kane's Labs For INST377</h1>
+        </header>
+      <div class = "container">
+          <div albums class = "left_section box">
+            <h2>Album Names</h2>
+            <ol class = "box">
+              <li>Nas - It Was Written</li>
+              <li>Jay-Z - Blueprint 2</li>
+              <li>DMX - It's Dark and Hell is Hot</li>
+              <li>50 Cent - Guess Who's Back?</li>
+              <li>Eminem - The Marshall Mathers LP</li>
+            </ol>
+          </div>
+          <div images class = "right_section box">
+            <h2>Image Carousel</h2>
+             <div class="carousel">
+                <button class = "prev">prev</button>
+                  <div class = "slides">
+                  <div class="carousel_item visible"><img id="slide_1" src="images/tiger1.jpg" alt="tiger" /></div>
+                  <div class="carousel_item hidden"><img id="slide_2" src= "images/tiger2.jpg" alt="tiger w"/></div>
+                  <div class="carousel_item hidden"><img id="slide_3" src= "images/tiger3.jpg" alt="tony"/></div>
+                  <div class="carousel_item hidden"><img id="slide_4" src= "images/tiger4.png" alt="shere khan"/></div>
+                  </div>
+                <button class = "next">next</button>
+              </div>
+            <div class = "box">  Different Tigers :)</div>
+          </div>
+      </div>
+    </div>
+    
+  <footer class = "footer">Github username is: hkane21 & Github link is <a href="http://github.com/hkane21" target="_blank" rel="noopener noreferrer">here</a></footer>
+  <script src= "script.js"></script>
+</body>
+</html>
