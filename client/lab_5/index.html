@@ -7,3 +7,48 @@
     you will need a "filter" button with a type of "button" and a
     "load data" button with a type of "submit" on it
 -->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hassan Kane's Labs For INST377</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <h1>Hassan Kane INST377 Labs</h1>
+      </header>
+      <div class="container">
+        <div class="left_section box">
+          <h3>Form Inputs</h3>
+            <!-- Restaurant Names-->
+            <form
+              action="https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json"
+              class="box main_form"
+            >
+              <label for="resto">Restaurant Names</label>
+              <input type="text" name="resto" id="resto"/>
+              <button type="submit">Load Data</button>
+              <button type ="button" class="filter_button">Filter Data</button>
+            </form>
+        </div>
+        <div class="right_section box">
+          <h3>Local Restaurants</h3>
+          <div class="restaurant_list box">A list of local restaurants</div>
+        </div>
+      </div>
+    </div>
+    <footer class="footer">
+      Github username is: hkane21 & Github link is
+      <a
+        href="http://github.com/hkane21"
+        target="_blank"
+        rel="noopener noreferrer"
+        >here</a
+      >
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>
