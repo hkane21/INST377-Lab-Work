@@ -283,6 +283,7 @@
     height: 2rem;
     border-radius: 4px;
   }
+  
   form buttons {
     display: flex;
     flex-direction: row;
