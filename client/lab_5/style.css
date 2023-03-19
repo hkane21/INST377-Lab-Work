@@ -284,10 +284,10 @@
     border-radius: 4px;
   }
   
-  form buttons {
+  .buttons {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-evenly;
   }
 
   form label {
