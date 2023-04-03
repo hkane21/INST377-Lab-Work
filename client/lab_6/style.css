@@ -1,9 +1,3 @@
-/* CSS instructions for Lab 5 */
-/* Bring in your successful CSS from week 4 */
-/*
-    Add a flexbox class that will keep two buttons nicely styled next to one another
-    under your HTML form and input field
- */
  * {
   box-sizing: border-box;
 }
@@ -271,6 +265,7 @@ div.carousel {
 .prev:hover,
 .next:hover {
   /* Pick a good background colour for your hover pseudoclass */
+  color: #f4c6c6;
 }
 
 form input {

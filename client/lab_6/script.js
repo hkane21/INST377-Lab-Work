@@ -3,6 +3,7 @@ function getRandomIntInclusive(min, max) {
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min + 1) + min); // The maximum is inclusive and the minimum is inclusive
 }
+
 function injectHTML(list) {
   console.log('fired injectHTML');
   const target = document.querySelector('#restaurant_list');
@@ -12,6 +13,7 @@ function injectHTML(list) {
     target.innerHTML += str;
   });
 }
+
 function filterList(list, query) {
   return list.filter((item) => {
     const LCaseName = item.name.toLowerCase();
@@ -19,6 +21,7 @@ function filterList(list, query) {
     return LCaseName.includes(LCaseQuery);
   })
 }
+
 function processRestaurants(list) {
   console.log('fired restaurants list');
   const range = [...Array(15).keys()];
@@ -27,6 +30,7 @@ function processRestaurants(list) {
     return list[index]
   });
 }
+
 async function mainEvent() { // the async keyword means we can make API requests
   const mainForm = document.querySelector('.main_form'); // This class name needs to be set on your form before you can listen for an event on it
   const filterButton = document.querySelector('#filter_button');// Add a querySelector that targets your filter button here
@@ -73,6 +77,7 @@ async function mainEvent() { // the async keyword means we can make API requests
     console.table(currentList);
     injectHTML(currentList);
   });
+
   filterButton.addEventListener('click', (event) => {
     console.log('Clicked FilterButton');
     const formData = new FormData(mainForm);
@@ -82,6 +87,7 @@ async function mainEvent() { // the async keyword means we can make API requests
     console.log(newList);
     injectHTML(newList);
   })
+
   generateListButton.addEventListener('click', (event) => {
     console.log('generate new list');
     const restaurantList = processRestaurants(currentList);
@@ -89,6 +95,7 @@ async function mainEvent() { // the async keyword means we can make API requests
     injectHTML(restaurantList);
   })
 }
+
 /*
   This adds an event listener that fires our main event only once our page elements have loaded
   The use of the async keyword means we can "await" events before continuing in our scripts
