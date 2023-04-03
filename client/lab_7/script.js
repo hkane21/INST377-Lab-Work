@@ -98,7 +98,7 @@ function getRandomIntInclusive(min, max) {
       console.log(newList);
       injectHTML(newList);
     })
-  
+  }
   /*
     This adds an event listener that fires our main event only once our page elements have loaded
     The use of the async keyword means we can "await" events before continuing in our scripts
