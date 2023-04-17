@@ -319,12 +319,6 @@ form label {
       justify-content: flex-start;
     }*/
 
-    #map{
-    width: 400px;
-    height: 360px;
-    margin-bottom: 1rem;
-    }
-
   .right_section {
     flex: 1 1 auto;
     justify-content: start;
