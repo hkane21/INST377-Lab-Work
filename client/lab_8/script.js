@@ -39,8 +39,10 @@ async function mainEvent() { // the async keyword means we can make API requests
   generateListButton.classList.add('hidden');
   const textField = document.querySelector('#resto');
   const carto = initMap();
-  const storedData = JSON.parse(localStorage.getItem('storedData'));
-  if (storedData?.length > 0) {
+  
+  const storedData = localStorage.getItem('storedData');
+  let parsedData = JSON.parse(storedData);
+  if (parsedData?.length > 0) {
     generateListButton.classList.remove('hidden');
   }
 
@@ -74,12 +76,10 @@ async function mainEvent() { // the async keyword means we can make API requests
     // This changes the response from the GET into data we can use - an "object"
     const storedList = await results.json();
     localStorage.setItem('storedData',JSON.stringify(storedList));
-    
-    /*
-      This array initially contains all 1,000 records from your request,
-      but it will only be defined _after_ the request resolves - any filtering on it before that
-      simply won't work.
-    */
+    parsedData = storedList;
+    if (parsedData?.length>0){
+      generateListButton.classList.remove("hidden");
+    }
     loadAnimation.style.display = 'none';
     console.table(storedList);
     injectHTML(storedList);
@@ -97,11 +97,11 @@ async function mainEvent() { // the async keyword means we can make API requests
 
   generateListButton.addEventListener('click', (event) => {
     console.log('generate new list');
-    currentList = processRestaurants(storedData);
+    currentList = processRestaurants(parsedData);
     console.log(currentList);
     injectHTML(currentList);
     markerPlace(currentList, carto);
-  })
+  });
 
   textField.addEventListener('input', (event) => {
     console.log('input', event.target.value);
@@ -109,13 +109,13 @@ async function mainEvent() { // the async keyword means we can make API requests
     console.log(newList);
     injectHTML(newList);
     markerPlace(newList, carto);
-  })
+  });
 
   clearDataButton.addEventListener('click', (event)=>{
     console.log('clear browser data');
     localStorage.clear();
     console.log('localStorage Check', localStorage.getItem("storedData"));
-  })
+  });
 
   //filterList
 }
