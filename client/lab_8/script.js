@@ -99,22 +99,9 @@ async function mainEvent() { // the async keyword means we can make API requests
   loadAnimation.style.display = 'none';
   generateListButton.classList.add('hidden');
   const textField = document.querySelector('#resto');
-<<<<<<< HEAD
-  // const carto = initMap();
-
-  const chartData = await getData();
-  const shapedData = shapeDataForChart(chartData);
-  console.log(shapedData);
-  const myChart = initChart(chartTarget, shapedData);
-
-  const storedData = localStorage.getItem('storedData');
-  let parsedData = JSON.parse(storedData);
-  if (parsedData?.length > 0) {
-=======
   const carto = initMap();
   const storedData = JSON.parse(localStorage.getItem('storedData'));
   if (storedData?.length > 0) {
->>>>>>> parent of c1ea19c (fixed_an_error_FINALVERSION)
     generateListButton.classList.remove('hidden');
   }
 
@@ -163,36 +150,19 @@ async function mainEvent() { // the async keyword means we can make API requests
 
   generateListButton.addEventListener('click', (event) => {
     console.log('generate new list');
-<<<<<<< HEAD
-    currentList = processRestaurants(chartData);
-    console.log(currentList);
-    injectHTML(currentList);
-    // markerPlace(currentList, carto);
-    const localData = shapeDataForChart(currentList);
-    changeChart(myChart, localData);
-  });
-=======
     currentList = processRestaurants(storedData);
     console.log(currentList);
     injectHTML(currentList);
     markerPlace(currentList, carto);
   })
->>>>>>> parent of c1ea19c (fixed_an_error_FINALVERSION)
 
   textField.addEventListener('input', (event) => {
     console.log('input', event.target.value);
     const newList = filterList(currentList, event.target.value);
     console.log(newList);
     injectHTML(newList);
-<<<<<<< HEAD
-    // markerPlace(newList, carto);
-    const localData = shapeDataForChart(newList);
-    changeChart(myChart, localData);
-  });
-=======
     markerPlace(newList, carto);
   })
->>>>>>> parent of c1ea19c (fixed_an_error_FINALVERSION)
 
   clearDataButton.addEventListener('click', (event)=>{
     console.log('clear browser data');
