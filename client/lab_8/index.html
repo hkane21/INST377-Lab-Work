@@ -5,15 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Hassan Kane's Labs For INST377</title>
 
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+    <!-- <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
     integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
-    crossorigin=""/>
+    crossorigin=""/> -->
 
     <link rel="stylesheet" href="style.css" />
    
-    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+    <!-- <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
      integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
-     crossorigin=""></script>
+     crossorigin=""></script> -->
+
+     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
   </head>
   <body>
     <div class="wrapper">
@@ -39,7 +42,11 @@
         </div>
         <div class="right_section box">
           <h2>Local Restaurants</h2>
-          <div id="map" class="box"></div>
+          <div class = "chart_container">
+            <canvas id="myChart"></canvas>
+          </div>
+           
+          <!-- <div id="map" class="box"></div> -->
           <ol class="box" id="restaurant_list">
             A list of local restaurants
           </ol>

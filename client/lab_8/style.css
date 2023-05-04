@@ -292,6 +292,11 @@ form input {
   justify-content: space-evenly;
 }
 
+.chart_container{
+  height: 100%;
+  width: 100%;
+}
+
 form label {
   width: 100%;
   width: -moz-available; /* WebKit-based browsers will ignore this. */
