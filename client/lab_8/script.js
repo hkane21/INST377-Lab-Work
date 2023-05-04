@@ -99,6 +99,7 @@ async function mainEvent() { // the async keyword means we can make API requests
   loadAnimation.style.display = 'none';
   generateListButton.classList.add('hidden');
   const textField = document.querySelector('#resto');
+<<<<<<< HEAD
   // const carto = initMap();
 
   const chartData = await getData();
@@ -109,6 +110,11 @@ async function mainEvent() { // the async keyword means we can make API requests
   const storedData = localStorage.getItem('storedData');
   let parsedData = JSON.parse(storedData);
   if (parsedData?.length > 0) {
+=======
+  const carto = initMap();
+  const storedData = JSON.parse(localStorage.getItem('storedData'));
+  if (storedData?.length > 0) {
+>>>>>>> parent of c1ea19c (fixed_an_error_FINALVERSION)
     generateListButton.classList.remove('hidden');
   }
 
@@ -131,10 +137,12 @@ async function mainEvent() { // the async keyword means we can make API requests
     // const chartData = await getData();
     const storedList = await results.json();
     localStorage.setItem('storedData',JSON.stringify(storedList));
-    parsedData = storedList;
-    if (parsedData?.length>0){
-      generateListButton.classList.remove("hidden");
-    }
+    
+    /*
+      This array initially contains all 1,000 records from your request,
+      but it will only be defined _after_ the request resolves - any filtering on it before that
+      simply won't work.
+    */
     loadAnimation.style.display = 'none';
     console.table(storedList);
     injectHTML(storedList);
@@ -155,6 +163,7 @@ async function mainEvent() { // the async keyword means we can make API requests
 
   generateListButton.addEventListener('click', (event) => {
     console.log('generate new list');
+<<<<<<< HEAD
     currentList = processRestaurants(chartData);
     console.log(currentList);
     injectHTML(currentList);
@@ -162,22 +171,34 @@ async function mainEvent() { // the async keyword means we can make API requests
     const localData = shapeDataForChart(currentList);
     changeChart(myChart, localData);
   });
+=======
+    currentList = processRestaurants(storedData);
+    console.log(currentList);
+    injectHTML(currentList);
+    markerPlace(currentList, carto);
+  })
+>>>>>>> parent of c1ea19c (fixed_an_error_FINALVERSION)
 
   textField.addEventListener('input', (event) => {
     console.log('input', event.target.value);
     const newList = filterList(currentList, event.target.value);
     console.log(newList);
     injectHTML(newList);
+<<<<<<< HEAD
     // markerPlace(newList, carto);
     const localData = shapeDataForChart(newList);
     changeChart(myChart, localData);
   });
+=======
+    markerPlace(newList, carto);
+  })
+>>>>>>> parent of c1ea19c (fixed_an_error_FINALVERSION)
 
   clearDataButton.addEventListener('click', (event)=>{
     console.log('clear browser data');
     localStorage.clear();
     console.log('localStorage Check', localStorage.getItem("storedData"));
-  });
+  })
 
   //filterList
 }
