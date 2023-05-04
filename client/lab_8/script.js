@@ -33,7 +33,7 @@ function processRestaurants(list) {
 
 function initChart(chart, object){
   const labels = Object.keys(object);
-  const info = Object.keys(object).map((item)=> object[item.length]);
+  const info = Object.keys(object).map((item)=> object[item].length);
   
   return new Chart(chart, {
     type: 'bar',
@@ -59,7 +59,7 @@ function initChart(chart, object){
 
 function changeChart(chart, object){
   const labels = Object.keys(object);
-  const info = Object.keys(object).map((item)=> object[item.length]);
+  const info = Object.keys(object).map((item)=> object[item].length);
 
   chart.data.labels = labels;
   chart.data.datasets.forEach((dataset) => {
