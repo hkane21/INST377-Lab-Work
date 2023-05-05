@@ -92,16 +92,15 @@ async function mainEvent() { // the async keyword means we can make API requests
   const mainForm = document.querySelector('.main_form'); // This class name needs to be set on your form before you can listen for an event on it
   // const filterButton = document.querySelector('#filter_button');// Add a querySelector that targets your filter button here
   const loadDataButton = document.querySelector('#data_load');// Add a querySelector that targets your load county data button here
-  const clearDataButton = document.querySelector('#data_clear');// Add a querySelector that clears your load county data button here
   const generateListButton = document.querySelector('#generate');// Add a querySelector that targets your generate button here
   const chartTarget = document.querySelector('#myChart');
   const loadAnimation = document.querySelector('#load_animation');
   loadAnimation.style.display = 'none';
   generateListButton.classList.add('hidden');
   const textField = document.querySelector('#resto');
-  const carto = initMap();
+
   const storedData = JSON.parse(localStorage.getItem('storedData'));
-  if (storedData?.length > 0) {
+  if (storedData.length > 0) {
     generateListButton.classList.remove('hidden');
   }
 
@@ -124,7 +123,6 @@ async function mainEvent() { // the async keyword means we can make API requests
     // const chartData = await getData();
     const storedList = await results.json();
     localStorage.setItem('storedData',JSON.stringify(storedList));
-    
     /*
       This array initially contains all 1,000 records from your request,
       but it will only be defined _after_ the request resolves - any filtering on it before that
@@ -153,7 +151,6 @@ async function mainEvent() { // the async keyword means we can make API requests
     currentList = processRestaurants(storedData);
     console.log(currentList);
     injectHTML(currentList);
-    markerPlace(currentList, carto);
   })
 
   textField.addEventListener('input', (event) => {
@@ -161,43 +158,10 @@ async function mainEvent() { // the async keyword means we can make API requests
     const newList = filterList(currentList, event.target.value);
     console.log(newList);
     injectHTML(newList);
-    markerPlace(newList, carto);
-  })
-
-  clearDataButton.addEventListener('click', (event)=>{
-    console.log('clear browser data');
-    localStorage.clear();
-    console.log('localStorage Check', localStorage.getItem("storedData"));
   })
 
   //filterList
 }
-
-function initMap (){
-  const carto = L.map('map').setView([38.9897, -76.9378], 13);
-  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-}).addTo(carto);
-return carto;                   
-}
-
-function markerPlace (array, map) {
-console.log('array for markers', array);
-
-map.eachLayer((layer) => {
-  if (layer instanceof L.Marker) {
-    layer.remove();
-  }
-});
-
-array.forEach((item) => {
-console.log('markerPlace', item);
-const {coordinates} = item.geocoded_column_1;
-L.marker([coordinates[1], coordinates[0]]).addTo(map);
-})
-}
-
 /*
   This adds an event listener that fires our main event only once our page elements have loaded
   The use of the async keyword means we can "await" events before continuing in our scripts
